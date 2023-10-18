@@ -2,7 +2,7 @@
 stack_t *head = NULL;
 
 /**
- * main - entry point
+ * main - The entry point
  * @argc: The argument count
  * @argv: The argument vector
  * Return: Always 0 on Success
