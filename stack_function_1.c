@@ -2,7 +2,7 @@
 
 
 /**
- * add_to_stack - Function adds a node to the stack.
+ * add_to_stack - This function adds a node to the stack.
  * @new_node: The pointer to the new node.
  * @ln: The integer representing the line number of of the opcode.
  */
