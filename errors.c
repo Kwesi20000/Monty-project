@@ -6,10 +6,10 @@
  * (1) -> The user does not give any file or more than one file to the program.
  * (2) -> The file provided is not a file that can be opened or read.
  * (3) -> The file provided contains an invalid instruction.
- * (4) -> When the program is unable to malloc more memory.
+ * (4) -> When the program is unable to add malloc memory.
  * (5) -> When the parameter passed to the instruction "push" is not an int.
- * (6) -> When the stack it empty for pint.
- * (7) -> When the stack it empty for pop.
+ * (6) -> When the stack is empty for pint.
+ * (7) -> When the stack is empty for pop.
  * (8) -> When stack is too short for operation.
  */
 void error(int error_code, ...)
