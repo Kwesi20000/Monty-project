@@ -70,7 +70,7 @@ void div_nodes(stack_t **, unsigned int);
 void mul_nodes(stack_t **, unsigned int);
 void mod_nodes(stack_t **, unsigned int);
 
-/*For string operations*/
+/*For the string operations*/
 void print_character(stack_t **, unsigned int);
 void print_string(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
