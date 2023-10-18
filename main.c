@@ -1,5 +1,4 @@
 #include "monty.h"
-stack_t *head = NULL;
 
 /**
  * main - The entry point
@@ -44,6 +43,7 @@ stack_t *create_node(int n)
  */
 void free_nodes(void)
 {
+	stack_t *head = NULL;
 	stack_t *temp;
 
 	if (head == NULL)
@@ -65,6 +65,7 @@ void free_nodes(void)
  */
 void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
+	stack_t *head = NULL;
 	stack_t *temp;
 
 	if (new_node == NULL || *new_node == NULL)
