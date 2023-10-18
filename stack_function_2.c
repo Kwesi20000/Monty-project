@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * nop - Function does nothing.
+ * nop - This function does nothing.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_num: Integer representing the line number of of the opcode.
  */
