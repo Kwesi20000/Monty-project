@@ -21,7 +21,7 @@ void print_character(stack_t **stack, unsigned int line_num)
 }
 
 /**
- * print_string - Function prints a string.
+ * print_string - This function prints a string.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_n: Integer representing the line number of of the opcode.
  */
