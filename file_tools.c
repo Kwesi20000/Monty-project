@@ -125,7 +125,7 @@ void find_function(char *opcode, char *value, int line_num, int format)
 
 /**
  * call_function - Function calls the required function.
- * @func: Pointer to the function that is about to be called.
+ * @function: Pointer to the function that is about to be called.
  * @op: string representing the opcode.
  * @val: string representing a numeric value.
  * @ln: line number for the instruction.
