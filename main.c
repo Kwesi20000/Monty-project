@@ -1,86 +1,45 @@
 #include "monty.h"
-/*stack_t *head = NULL;*/
-
+bus_t bus = {NULL, NULL, NULL, 0};
 /**
- * main - The entry point
- * @argc: The argument count
- * @argv: The argument vector
- * Return: Always 0 on success
- */
-
+* main - Entry point
+* @argc: argument count
+* @argv: argument vector
+* Return: 0 on success
+*/
 int main(int argc, char *argv[])
 {
-	stack_t *head = NULL;
+	char *content;
+	FILE *file;
+	size_t size = 0;
+	ssize_t read_line = 1;
+	stack_t *stack = NULL;
+	unsigned int line_num = 0;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	open_file(argv[1]);
-	free_nodes();
-	return (0);
-}
-
-/**
- * create_node - Function creates a node.
- * @n: Number to go inside the node.
- * Return: Returns a pointer to the node. Otherwise NULL.
- */
-stack_t *create_node(int n)
-{
-	stack_t *node;
-
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
-		error(4);
-	node->next = NULL;
-	node->prev = NULL;
-	node->n = n;
-	return (node);
-}
-
-/**
- * free_nodes - Function frees nodes in the stack.
- * Return: Nothing.
- */
-void free_nodes(void)
-{
-	stack_t *temp;
-
-	if (head == NULL)
-		return;
-
-	while (head != NULL)
+	file = fopen(argv[1], "r");
+	bus.file = file;
+	if (!file)
 	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
-}
-
-
-/**
- * add_to_queue - Function adds a node to the queue.
- * @new_node: Pointer to the new node.
- * @ln: line number of the opcode.
- */
-void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
-{
-	stack_t *temp;
-
-	if (new_node == NULL || *new_node == NULL)
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
-	if (head == NULL)
-	{
-		head = *new_node;
-		return;
 	}
-	temp = head;
-	while (temp->next != NULL)
-		temp = temp->next;
-
-	temp->next = *new_node;
-	(*new_node)->prev = temp;
-
+	while (read_line > 0)
+	{
+		content = NULL;
+		read_line = getline(&content, &size, file);
+		bus.content = content;
+		counter++;
+		if (read_line > 0)
+		{
+			exec(content, &stack, line_num, file);
+		}
+		free(content);
+	}
+	free_stack(stack);
+	fclose(file);
+return (0);
 }
