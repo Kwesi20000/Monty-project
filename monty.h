@@ -43,9 +43,9 @@ extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 /*For file operations*/
-void open_file(char *file_name);
-int parse_line(char *buffer, int line_number, int format);
-void read_file(FILE *);
+void open_file(char *file_name, stack_t **head);
+int parse_line(char *buffer, int line_number, int format, stack_t **head);
+void read_file(FILE *, stack_t **head);
 int len_chars(FILE *);
 void find_function(char *, char *, int, int);
 
