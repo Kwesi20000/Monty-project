@@ -56,7 +56,7 @@ void print_stack(stack_t **, unsigned int);
 void add_to_stack(stack_t **, unsigned int);
 void add_to_queue(stack_t **, unsigned int);
 
-void call_function(op_func, char *, char *, int, int);
+void call_func(op_func, char *, char *, int, int);
 
 void print_top(stack_t **, unsigned int);
 void pop_top(stack_t **, unsigned int);

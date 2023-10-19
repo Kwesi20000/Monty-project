@@ -16,7 +16,7 @@ void open_file(char *file_name, stack_t **head)
 		error(2, file_name);
 	}
 
-	read_file(fd);
+	read_file(fd, head);
 	fclose(fd);
 }
 
@@ -36,7 +36,7 @@ void read_file(FILE *fd, stack_t **head)
 
 	for (line_num = 1; getline(&buffer, &len, fd) != -1; line_num++)
 	{
-		format = parse_line(buffer, line_num, format);
+		format = parse_line(buffer, line_num, format, head);
 	}
 	free(buffer);
 }
@@ -71,7 +71,7 @@ int parse_line(char *buffer, int line_num, int format, stack_t **head)
 	if (strcmp(opcode, "queue") == 0)
 		return (1);
 
-	find_function(opcode, value, line_num, format);
+	find_function(opcode, value, line_num, format, head);
 	return (format);
 }
 
@@ -84,7 +84,7 @@ int parse_line(char *buffer, int line_num, int format, stack_t **head)
  * if 1 nodes will be entered as a queue.
  * Return: Nothing
  */
-void find_function(char *opcode, char *value, int line_num, int format)
+void find_function(char *opcode, char *value, int line_num, int format, stack_t **head)
 {
 	int i;
 	int flag;
@@ -115,7 +115,7 @@ void find_function(char *opcode, char *value, int line_num, int format)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			call_function(func_list[i].f, opcode, value, line_num, format);
+			call_func(func_list[i].f, opcode, value, line_num, format, head);
 			flag = 0;
 		}
 	}
@@ -127,15 +127,15 @@ void find_function(char *opcode, char *value, int line_num, int format)
 
 
 /**
- * call_function - Function calls the required function.
- * @function: Pointer to the function that is about to be called.
+ * call_func - Function calls the required function.
+ * @func: Pointer to the function that is about to be called.
  * @op: string representing the opcode.
  * @val: string representing a numeric value.
  * @ln: line number for the instruction.
- * @format: Format specifier. If 0 Nodes will be entered as a stack.
+ * @ft: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void call_function(op_func function, char *op, char *val, int ln, int format)
+void call_func(op_func func, char *op, char *val, int ln, int ft, stack_t **head)
 {
 	stack_t *node;
 	int flag;
@@ -157,11 +157,11 @@ void call_function(op_func function, char *op, char *val, int ln, int format)
 				error(5, ln);
 		}
 		node = create_node(atoi(val) * flag);
-		if (format == 0)
-			function(&node, ln);
-		if (format == 1)
+		if (ft == 0)
+			func(head, &node, ln);
+		if (ft == 1)
 			add_to_queue(&node, ln);
 	}
 	else
-		function(&head, ln);
+		func(head, head, ln);
 }

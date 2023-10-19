@@ -1,10 +1,11 @@
 #include "monty.h"
+stack_t *head = NULL;
 
 /**
  * main - The entry point
  * @argc: The argument count
  * @argv: The argument vector
- * Return: Always 0 on Success
+ * Return: Always 0 on success
  */
 
 int main(int argc, char *argv[])
@@ -14,9 +15,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
-	stack_t *head = NULL;
-
 	open_file(argv[1]);
 	free_nodes();
 	return (0);
@@ -24,8 +22,8 @@ int main(int argc, char *argv[])
 
 /**
  * create_node - Function creates a node.
- * @n: The number to go inside the node.
- * Return: Return a pointer to the node on success. Otherwise NULL.
+ * @n: Number to go inside the node.
+ * Return: Returns a pointer to the node. Otherwise NULL.
  */
 stack_t *create_node(int n)
 {
@@ -33,7 +31,7 @@ stack_t *create_node(int n)
 
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
-		error(4);
+		err(4);
 	node->next = NULL;
 	node->prev = NULL;
 	node->n = n;
@@ -42,7 +40,7 @@ stack_t *create_node(int n)
 
 /**
  * free_nodes - Function frees nodes in the stack.
- * Return: Nothing
+ * Return: Nothing.
  */
 void free_nodes(void)
 {
@@ -62,7 +60,7 @@ void free_nodes(void)
 
 /**
  * add_to_queue - Function adds a node to the queue.
- * @new_node: A pointer to the new node.
+ * @new_node: Pointer to the new node.
  * @ln: line number of the opcode.
  */
 void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
