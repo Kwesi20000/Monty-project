@@ -3,6 +3,7 @@
 /**
  * open_file - This function opens a file
  * @file_name: the file name
+ * @head: Pointer to the top of the stack or queue.
  * Return: Returns nothing
  */
 
@@ -23,6 +24,7 @@ void open_file(char *file_name, stack_t **head)
 /**
  * read_file - Function reads a file
  * @fd: The pointer to file descriptor
+ * @head: Pointer to the top of the stack or queue.
  * Return: Nothing
  */
 
@@ -47,6 +49,7 @@ void read_file(FILE *fd, stack_t **head)
  * @line_num: The line number
  * @format:  The storage format. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
+ * @head: Pointer to the top of the stack or queue.
  * Return: Returns 0 if the opcode is stack. 1 if it is a queue.
  */
 

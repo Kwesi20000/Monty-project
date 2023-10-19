@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 	}
 
 	stack_t *head = NULL;
+
 	open_file(argv[1]);
 	free_nodes();
 	return (0);
