@@ -6,7 +6,7 @@
  * Return: Returns nothing
  */
 
-void open_file(char *file_name)
+void open_file(char *file_name, stack_t **head)
 {
 	FILE *fd = fopen(file_name, "r");
 
@@ -26,7 +26,7 @@ void open_file(char *file_name)
  * Return: Nothing
  */
 
-void read_file(FILE *fd)
+void read_file(FILE *fd, stack_t **head)
 {
 	int line_num, format = 0;
 	char *buffer = NULL;
@@ -50,7 +50,7 @@ void read_file(FILE *fd)
  * Return: Returns 0 if the opcode is stack. 1 if it is a queue.
  */
 
-int parse_line(char *buffer, int line_num, int format)
+int parse_line(char *buffer, int line_num, int format, stack_t **head)
 {
 	char *opcode, *value;
 	const char *delimeter = "\n ";
