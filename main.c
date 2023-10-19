@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
+	stack_t *head = NULL;
 	open_file(argv[1]);
 	free_nodes();
 	return (0);
@@ -43,7 +45,6 @@ stack_t *create_node(int n)
  */
 void free_nodes(void)
 {
-	stack_t *head = NULL;
 	stack_t *temp;
 
 	if (head == NULL)
@@ -65,7 +66,6 @@ void free_nodes(void)
  */
 void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
-	stack_t *head = NULL;
 	stack_t *temp;
 
 	if (new_node == NULL || *new_node == NULL)
