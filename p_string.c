@@ -6,7 +6,7 @@
  * @line_num: line_number
  * Return: Nothing.
 */
-void f_pstr(stack_t **head, unsigned int line_num)
+void f_pstring(stack_t **head, unsigned int line_num)
 {
 	stack_t *h;
 	(void)line_num;
