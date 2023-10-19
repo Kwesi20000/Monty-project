@@ -54,7 +54,7 @@ int parse_line(char *buffer, int line_num, int format)
 	const char *delimeter = "\n ";
 
 	if (buffer == NULL)
-		err(4);
+		error(4);
 
 	opcode = strtok(buffer, delimeter);
 	if (opcode == NULL)
@@ -110,7 +110,7 @@ void find_function(char *opcode, char *value, int line_num, int format)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			call_funtion(func_list[i].f, opcode, value, line_num, format);
+			call_function(func_list[i].f, opcode, value, line_num, format);
 			flag = 0;
 		}
 	}
