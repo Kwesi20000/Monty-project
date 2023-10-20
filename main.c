@@ -1,7 +1,7 @@
 #include "monty.h"
 bus_t bus = {NULL, NULL, NULL, 0};
 /**
-* main - Entry point
+* main - Entry points
 * @argc: argument count
 * @argv: argument vector
 * Return: 0 on success
