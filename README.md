@@ -1,1 +1,1 @@
-Our Monty project readme which a 
+Our Monty project readme which are 
