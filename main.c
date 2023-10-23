@@ -3,7 +3,6 @@
 #define _GNU_SOURCE
 #include <stdlib.h>
 
-bus_t bus = {NULL, NULL, NULL, 0};
 /**
 * main - Entry points
 * @argc: argument count
@@ -18,6 +17,8 @@ int main(int argc, char *argv[])
 	ssize_t read_line = 1;
 	stack_t *stack = NULL;
 	unsigned int line_num = 0;
+
+	bus_t bus = {NULL, NULL, NULL, 0};
 
 	if (argc != 2)
 	{
